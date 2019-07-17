@@ -13,7 +13,6 @@ function setup() {
       window.plugins.insomnia.keepAwake();
   } catch(e){}
   
-
   song.loop();
 }
 
@@ -22,9 +21,11 @@ function draw() {
 
   var speed = Math.round(((rotationX + 180) / 180) * 1000) / 1000;
   song.rate(speed);
-  
+
   textSize(48);
   text(speed, 20, 100);
+  
+  reverb.set((rotationY + 90) / 20, 2);
   
   // Draw some circles to show what is going on
 
@@ -55,4 +56,7 @@ function handleFile(_what, fileObj) {
 
 function play(){
 	song.play();
+	
+    reverb = new p5.Reverb();
+    reverb.process(song, 0, 2);
 }
