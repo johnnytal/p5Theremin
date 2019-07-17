@@ -15,10 +15,10 @@ function setup() {
 function draw() {
   background(200);
 
-  let speed = map(accelerationY, 0.1, height, 0, 2);
-  speed = constrain(speed, 0.01, 4);
+  //let speed = map(accelerationY, 0.1, height, 0, 2);
+  //speed = constrain(speed, 0.01, 4);
   
-  song.rate(speed);
+  song.rate(Math.abs(rotationY / 25));
   
   // Draw some circles to show what is going on
 
