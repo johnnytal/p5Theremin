@@ -8,6 +8,11 @@ function preload() {
 
 function setup() {
   createCanvas(710, 400);
+  
+  try{
+      window.plugins.insomnia.keepAwake();
+  } catch(e){}
+  
 
   song.loop();
 }
@@ -15,16 +20,17 @@ function setup() {
 function draw() {
   background(200);
 
-  //let speed = map(accelerationY, 0.1, height, 0, 2);
-  //speed = constrain(speed, 0.01, 4);
+  var speed = (rotationY + 90) / 45;
+  song.rate(speed);
   
-  song.rate(Math.abs(rotationY / 25));
+  textSize(64);
+  text(speed, 100, 100);
   
   // Draw some circles to show what is going on
 
   stroke(0);
   fill(51, 100);
-  ellipse(100, mouseY, 48, 48);
+  ellipse(100, 200 + (rotationY * 2), 48, 48);
 }
 
 function handleFile(_what, fileObj) {
