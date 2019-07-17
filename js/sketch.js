@@ -25,10 +25,6 @@ function draw() {
   textSize(48);
   text(speed, 20, 100);
   
-  reverb.set((rotationY + 90) / 20, 2);
-  
-  // Draw some circles to show what is going on
-
   stroke(0);
   fill(51, 100);
   ellipse(350, 200 + (rotationX * (200/180)), 48, 48);
@@ -57,6 +53,6 @@ function handleFile(_what, fileObj) {
 function play(){
 	song.play();
 	
-    reverb = new p5.Reverb();
-    reverb.process(song, 0, 2);
+    /*reverb = new p5.Reverb();
+    reverb.process(song, 0, 2);*/
 }
