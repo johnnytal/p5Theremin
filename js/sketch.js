@@ -7,9 +7,7 @@ function preload() {
 function setup() {
  	createCanvas(400, 710);
   
-  	try{
-      	window.plugins.insomnia.keepAwake();
-  	} catch(e){}
+  	try{window.plugins.insomnia.keepAwake();} catch(e){}
   
   	song.loop();
 }
@@ -18,7 +16,7 @@ function draw() {
   	background(100);
 
   	var speed = Math.round((rotationX / 90) * 1000) / 1000;
-  	song.rate(speed);
+  	song.rate(constrain(speed, -2, 2));
 
   	textSize(48);
   	text('speed: ' + speed, 20, 100);
@@ -29,6 +27,8 @@ function draw() {
 }
 
 function handleFile(_what, fileObj) {
+	song.stop();
+	
 	var fileReader  = new FileReader;
 	
 	fileReader.readAsArrayBuffer(fileObj[0]);
@@ -41,13 +41,10 @@ function handleFile(_what, fileObj) {
 	
 	fileReader.onload = function(){
 	    var arrayBuffer = this.result;
-		
-		song.stop();
-		song = loadSound(url, play);
-		song.loop();
+		song = loadSound(url, playSong);
 	};
 }
 
-function play(){
-	song.play();
+function playSong(){
+	song.loop();
 }
