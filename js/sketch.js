@@ -1,13 +1,13 @@
-// A sound file object
 let song;
 
 function preload() {
-  // Load a sound file
   song = loadSound('assets/time_scratch.mp3');
 }
 
 function setup() {
-  createCanvas(710, 400);
+  createCanvas(400, 710);
+  
+  p5.disableFriendlyErrors = true;
   
   try{
       window.plugins.insomnia.keepAwake();
@@ -17,17 +17,17 @@ function setup() {
 }
 
 function draw() {
-  background(200);
+  background(100);
 
-  var speed = Math.round(((rotationX + 180) / 180) * 1000) / 1000;
+  var speed = map(rotationX, -180, 180, -2, 2); 
   song.rate(speed);
 
   textSize(48);
-  text(speed, 20, 100);
+  text('rotationX: ' + rotationX + '\n speed: ' + speed, 20, 100);
   
   stroke(0);
-  fill(51, 100);
-  ellipse(350, 200 + (rotationX * (200/180)), 48, 48);
+  fill(255);
+  ellipse(180, 200 + (rotationX * (200/180)), 48, 48);
 }
 
 function handleFile(_what, fileObj) {
@@ -45,14 +45,11 @@ function handleFile(_what, fileObj) {
 	    var arrayBuffer = this.result;
 		
 		song.stop();
-		
 		song = loadSound(url, play);
 	};
 }
 
 function play(){
+	song.loop();
 	song.play();
-	
-    /*reverb = new p5.Reverb();
-    reverb.process(song, 0, 2);*/
 }
