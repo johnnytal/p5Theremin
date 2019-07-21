@@ -1,33 +1,31 @@
-// A sound file object
 let song;
 
 function preload() {
-  // Load a sound file
-  song = loadSound('assets/time_scratch.mp3');
+	song = loadSound('assets/time_scratch.mp3');
 }
 
 function setup() {
-  createCanvas(400, 710);
+ 	createCanvas(400, 710);
   
-  try{
-      window.plugins.insomnia.keepAwake();
-  } catch(e){}
+  	try{
+      	window.plugins.insomnia.keepAwake();
+  	} catch(e){}
   
-  song.loop();
+  	song.loop();
 }
 
 function draw() {
-  background(100);
+  	background(100);
 
-  var speed = Math.round((rotationX / 90) * 1000) / 1000;
-  song.rate(speed);
+  	var speed = Math.round((rotationX / 90) * 1000) / 1000;
+  	song.rate(speed);
 
-  textSize(48);
-  text('speed: ' + speed, 20, 100);
+  	textSize(48);
+  	text('speed: ' + speed, 20, 100);
   
-  stroke(0);
-  fill(255);
-  ellipse(170, 200 + (rotationX * (200/180)), 48, 48);
+  	stroke(0);
+  	fill(255);
+  	ellipse(170, 355 + (rotationX * (200/180)), 48, 48);
 }
 
 function handleFile(_what, fileObj) {
