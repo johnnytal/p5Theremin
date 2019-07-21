@@ -22,8 +22,8 @@ function draw() {
   var speed = Math.round((rotationX / 90) * 1000) / 1000;
   song.rate(speed);
 
-  textSize(64);
-  text('speed' + speed, 20, 100);
+  textSize(48);
+  text('speed: ' + speed, 20, 100);
   
   stroke(0);
   fill(255);
@@ -46,10 +46,10 @@ function handleFile(_what, fileObj) {
 		
 		song.stop();
 		song = loadSound(url, play);
+		song.loop();
 	};
 }
 
 function play(){
-	song.loop();
 	song.play();
 }
