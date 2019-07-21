@@ -14,19 +14,19 @@ function setup() {
   } catch(e){}
   
   song.loop();
+  
+  textSize(48);
+  stroke(0);
+  fill(255);
 }
 
 function draw() {
   background(100);
 
-  var speed = map(rotationX, -180, 180, -2, 2); 
+  var speed = Math.round((rotationX / 90) * 100) / 100; 
   song.rate(speed);
 
-  textSize(48);
-  text('rotationX: ' + rotationX + '\n speed: ' + speed, 20, 100);
-  
-  stroke(0);
-  fill(255);
+  text('rotationX: ' + Math.round(rotationX * 100) / 100 + '\n speed: ' + speed, 20, 100);
   ellipse(180, 200 + (rotationX * (200/180)), 48, 48);
 }
 
