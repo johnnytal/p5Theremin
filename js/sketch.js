@@ -13,24 +13,18 @@ function setup() {
 
 function draw() {
 	try{
-  		background(100);
-	} catch(e){alert('background');}
-	
-	try{
   		var speed = rotationX / 90;
   		song.rate(constrain(speed, -2, 2));
-	} catch(e){alert('speed');}
+	} catch(e){alert(e+' speed');}
 
 	try{
+		background(100);
 	  	stroke(0);
 	  	fill(255);
 	  	ellipse(170, 355 + (rotationX * (200/180)), 48, 48);
-    } catch(e){alert('stroke');}
-    
-    try{
   		textSize(48);
 		text('speed: ' + Math.round(speed * 1000) / 1000, 20, 100);
-	catch(e){alert('text');}
+	catch(e){alert(e+' graphics');}
 }
 
 function handleFile(_what, fileObj) {
