@@ -24,6 +24,7 @@ function draw() {
 	  	ellipse(170, 355 + (rotationX * (200/180)), 48, 48);
   		textSize(48);
 		text('speed: ' + Math.round(speed * 1000) / 1000, 20, 100);
+	}
 	catch(e){alert(e+' graphics');}
 }
 
